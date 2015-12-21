@@ -61,3 +61,50 @@ prod = product [2,3]
 truthy7 = 4 `elem` [3,4,5]
 
 -- this is how you write comments
+
+-- texas ranges
+
+range1 = [1..5]
+-- [1,2,3,4,5]
+
+lettersRange = ['a'..'z']
+-- "abcdefghijklmnopqrstuvwxyz"
+
+-- first param is weird here, it breaks if it's smaller than lowe bounds
+withStep = [2,4..20]
+-- [2,4,6,8,10,12,14,16,18,20]
+
+-- ok I know why first number works this way - it's not a param - it's more like
+-- specifying two elements form the list to show that they differ by two :)
+
+from20to1 = [20,19..1]
+
+-- beware floting points
+beware = [0.1, 0.3 .. 1]
+-- [0.1,0.3,0.5,0.7,0.8999999999999999,1.0999999999999999]
+
+-- how you would get the first 24 multiples of 13
+ver1 = [13,26..24*13]
+ver2 = take 24 [13,26..]
+
+
+-- infinite lists
+
+tenNums = take 10 (cycle [1,2,3])
+lol3 = take 12 (cycle "LOL ")
+-- "LOL LOL LOL "
+
+fives = take 10 (repeat 5)
+-- [5,5,5,5,5,5,5,5,5,5]
+
+fives' = replicate 10 5
+
+
+
+-- List comprehensions:
+
+
+
+
+
+--

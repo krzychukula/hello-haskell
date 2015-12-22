@@ -187,21 +187,52 @@ rightTriangles = [ (a,b,c)
 
 
 
+-- BEGIN http://book.realworldhaskell.org/read/getting-started.html
+
+-- :info (+)
+-- class Num a where
+--  (+) :: a -> a -> a
+    -- Defined in ‘GHC.Num’
+-- infixl 6 +
+
+-- :info (*)
+-- class Num a where
+--   ...
+--   (*) :: a -> a -> a
+--   ...
+--     -- Defined in ‘GHC.Num’
+-- infixl 7
+
+-- :info (^)
+-- (^) :: (Num a, Integral b) => a -> b -> a   -- Defined in ‘GHC.Real’
+-- infixr 8 ^
+
+--infixl - associativity: left
+--infixr - associativity: right
+
+-- associativity rules + precedence rules => fixity rules
+
+e = exp 1
+-- e = 2.718281828459045
+
+-- floating point exponentiation
+
+expRes = (e ** pi) - pi
+-- 19.99909997918947
 
 
+-- :set +t
+-- > 'c'
+-- 'c'
+-- it :: Char
 
+-- ghci> "foo"
+-- "foo"
+-- it :: [Char]
 
-
-
-
-
-
-
-
-
-
-
-
+-- it ++ "bar"
+-- "foobar"
+-- it :: [Char]
 
 
 

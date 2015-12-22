@@ -6,6 +6,8 @@ main :: IO ()
 main = someFunc
 
 
+
+-- START OF: http://learnyouahaskell.com/starting-out
 doubleMe x = x + x
 
 doubleUs x y = doubleMe x + doubleMe y
@@ -147,6 +149,60 @@ getEven = [ [ x | x <- xs, even x ] | xs <- xxs]
 
 
 -- next: Tuples
+
+listOfCoordinates = [(1,2),(8,11),(4,5)]
+-- error: [(1,2),(8,11,5),(4,5)]
+-- error: [(1,2),("One",2)]
+
+nameAndage = ("Christopher", "Walken", 55)
+
+eight = fst (8,11)
+wow = fst ("Wow", False);
+
+eleven = snd (8,11)
+false = snd ("Wow", False)
+
+listWithTuples = zip [1,2,3,4,5] [5,5,5,5,5]
+-- [(1,5),(2,5),(3,5),(4,5),(5,5)]
+
+numAndName = zip [1..3] ["one", "two", "three"]
+-- [(1,"one"),(2,"two"),(3,"three")]
+
+-- ignores elements in longer list to preserve type
+-- zip [5,3,2,6,2,7,2,5,4,6,6] ["im","a","turtle"]
+-- [(5,"im"),(3,"a"),(2,"turtle")]
+
+usingInfiniteList = zip [1..] ["apple", "orange", "cherry", "mango"]
+-- [(1,"apple"),(2,"orange"),(3,"cherry"),(4,"mango")]
+
+triangles = [ (a,b,c)
+              | c <- [1..10], b <- [1..10], a <- [1..10]]
+
+rightTriangles = [ (a,b,c)
+              | c <- [1..10], b <- [1..c], a <- [1..b]
+              , a^2 + b^2 == c^2]
+-- [(3,4,5),(6,8,10)]
+
+-- END of http://learnyouahaskell.com/starting-out
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 -- end of file

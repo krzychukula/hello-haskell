@@ -103,8 +103,50 @@ fives' = replicate 10 5
 
 -- List comprehensions:
 
+comprehensionEvenNaturalToTen = [x*2 | x <- [1..10]]
+-- [2,4,6,8,10,12,14,16,18,20]
+
+compEvenNatToTenGe12 = [x*2 | x <- [1..10], x*2 >= 12]
+-- [12,14,16,18,20]
+
+comp3 = [x | x <- [50..100], x `mod` 7 == 3]
+-- [52,59,66,73,80,87,94]
+
+boomBangs xs = [ if x < 10 then "BOOM!" else "BANG!" | x <- xs, odd x]
+-- boomBangs [-3..10]
+-- ["BOOM!","BOOM!","BOOM!","BOOM!","BOOM!","BOOM!","BOOM!"]
+
+manyPredicates = [x | x <- [10..20], x /= 13, x/=15, x /= 19]
+-- [10,11,12,14,16,17,18,20]
+
+allProducts = [x*y | x <- [2,5,10], y <- [8,10,11]]
+-- [16,20,22,40,50,55,80,100,110]
+
+prodMore50 = [x*y | x <- [2,5,10], y <- [8,10,11], x*y > 50]
+-- [55,80,100,110]
 
 
+nouns = ["hobo", "frog", "pope"]
+adjectives = ["lazy","grouchy","scheming"]
+combination = [adjective ++ " " ++ noun | adjective <- adjectives, noun <- nouns]
+-- ["lazy hobo","lazy frog","lazy pope","grouchy hobo",
+--  "grouchy frog","grouchy pope","scheming hobo","scheming frog","scheming pope"]
+
+length' xs = sum [1 | _ <- xs]
+sampleLength = length' [1..10]
+-- 10
+
+removeNonUppercase st = [ c | c <- st, c `elem` ['A'..'Z']]
+removed = removeNonUppercase "test Of filter in hasKell"
+-- removed "OK"
 
 
---
+xxs = [[1,3,5,2,3,1,2,4,5],[1,2,3,4,5,6,7,8,9],[1,2,4,2,1,6,3,1,3,2,3,6]]
+getEven = [ [ x | x <- xs, even x ] | xs <- xxs]
+-- [[2,2,4],[2,4,6,8],[2,4,2,6,2,6]]
+
+
+-- next: Tuples
+
+
+-- end of file

@@ -10,3 +10,6 @@
 
 1. `stack runghc WC < hello-haskell.cabal`
 : 41
+
+## easy testing while writing:
+`nodemon --ext hs --exec "stack runghc typesandfunctions"`

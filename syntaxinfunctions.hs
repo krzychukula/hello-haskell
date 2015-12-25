@@ -98,3 +98,53 @@ a `myCompare` b
   | a > b     = GT
   | a == b    = EQ
   | otherwise = LT
+
+-- Where?!
+
+bmiTell2 :: RealFloat a => a -> a -> String
+bmiTell2 weight height
+  | bmi <= 18.5 = "You're underweight"
+  | bmi <= 25.0 = "You're supposedly normal"
+  | bmi <= 30.0 = "Lose some weight"
+  | otherwise   = "You really have to lose weight"
+  where bmi = weight / height ^ 2
+
+
+bmiTell3 :: RealFloat a => a -> a -> String
+bmiTell3 weight height
+  | bmi <= skinny = "You're underweight"
+  | bmi <= normal = "You're supposedly normal"
+  | bmi <= fat    = "Lose some weight"
+  | otherwise     = "You really have to lose weight"
+  where bmi    = weight / height ^ 2
+        skinny = 18.5
+        normal = 25.0
+        fat    = 30.0
+
+bmiTell4 :: RealFloat a => a -> a -> String
+bmiTell4 weight height
+  | bmi <= skinny = "You're underweight"
+  | bmi <= normal = "You're supposedly normal"
+  | bmi <= fat    = "Lose some weight"
+  | otherwise     = "You really have to lose weight"
+  where bmi    = weight / height ^ 2
+        (skinny, normal, fat) = (18.5, 25.0, 30.0)
+
+initials :: String -> String -> String
+initials firstname lastname = [f] ++ ". " ++ [l] ++ "."
+    where (f:_) = firstname
+          (l:_) = lastname
+
+calcBmis :: RealFloat a => [(a, a)] -> [a]
+calcBmis xs = [  bmi w h | (w, h) <- xs]
+  where bmi weight height = weight / height ^ 2
+-- calcBmis [(12, 2), (15, 34)]
+-- [3.0,1.2975778546712802e-2]
+
+
+-- Let it be
+
+
+
+
+--

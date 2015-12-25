@@ -157,12 +157,36 @@ squaretuple = [let square x = x * x in (square 5, square 3, square 2)]
 tupleMultipleLet = (let a = 100; b = 200; c = 300 in a*b*c, let foo="Hey "; bar = "there!" in foo ++ bar)
 -- (6000000,"Hey there!")
 
-sixhundred (let (a,b,c) = (1,2,3) in a+b+c) * 100
+sixhundred = (let (a,b,c) = (1,2,3) in a+b+c) * 100
 
 calcBmis2 :: RealFloat a => [(a,a)] -> [a]
 calcBmis2 xs = [bmi | (w, h) <- xs, let bmi = w / h ^ 2, bmi >= 25.0]
 
 -- Next: Case expressions
+
+
+headp :: [a] -> a
+headp [] = error "No head for empty lists!"
+deadp (x:_) = x
+
+headcase :: [a] -> a
+headcase xs = case xs of
+  [] -> error "No head for empty lists!"
+  (x:_) -> x
+
+
+describeList :: [a] -> String
+describeList xs = "The list is " ++ case xs of [] -> "empty."
+                                               [x] -> "a sigle list."
+                                               xs -> "a longer list."
+
+describeList' :: [a] -> String
+describeList' xs = "The list is " ++ what xs
+  where what [] = "empty."
+        what [x] = "a single list."
+        what xs = "a longer list."
+
+
 
 
 --

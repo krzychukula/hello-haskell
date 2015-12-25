@@ -71,3 +71,30 @@ capital all@(x:xs) = "The first lettef of " ++ all ++ " is " ++ [x]
 
 
 -- Next: Guards, guards!
+
+
+bmiTell1 :: RealFloat a => a -> String
+bmiTell1 bmi
+  | bmi <= 18.5 = "You're underweight"
+  | bmi <= 25.0 = "You're supposedly normal"
+  | bmi <= 30.0 = "Lose some weight"
+  | otherwise   = "You really have to lose weight"
+
+bmiTell :: RealFloat a => a -> a -> String
+bmiTell weight height
+  | weight / height ^ 2 <= 18.5 = "You're underweight"
+  | weight / height ^ 2 <= 25.0 = "You're supposedly normal"
+  | weight / height ^ 2 <= 30.0 = "Lose some weight"
+  | otherwise                   = "You really have to lose weight"
+
+
+max' :: Ord a => a -> a -> a
+max' a b
+  | a > b     = a
+  | otherwise = b
+
+myCompare :: Ord a => a -> a -> Ordering
+a `myCompare` b
+  | a > b     = GT
+  | a == b    = EQ
+  | otherwise = LT

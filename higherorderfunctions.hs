@@ -102,6 +102,61 @@ addThree2 = \x -> \y -> \z -> x + y + z
 fliplambda :: (a -> b -> c) -> b -> a -> c
 fliplambda f = \x y -> f y x
 
+-- folds
+
+sum' :: (Num a) => [a] -> a
+sum' xs = foldl (\acc x -> acc + x) 0 xs
+
+eleven = sum' [3,5,2,1]
+-- 11
+
+sums :: (Num a) => [a] -> a
+sums = foldl (+) 0
+
+elem' :: Eq a => a -> [a] -> Bool
+elem' y ys = foldl (\acc x -> if x == y then True else acc) False ys
+
+mapf :: (a -> b) -> [a] -> [b]
+mapf f xs = foldr (\x acc -> f x : acc) [] xs
+
+sumfrom :: Num a => [a] -> a
+sumfrom = foldl1 (+)
+
+
+maximum' :: Ord a => [a] -> a
+maximum' = foldr1 (\x acc -> if x > acc then x else acc)
+
+reverse' :: [a] -> [a]
+reverse' = foldl (\acc x -> x : acc) []
+
+product' :: Num a => [a] -> a
+product' = foldr1 (*)
+
+--filter' :: (a -> Bool) -> [a] -> [a]
+--filter' p = foldr (\x acc -> if p x then x : acc else acc) []
+
+head' :: [a] -> a
+head' = foldr1 (\x _ -> x)
+
+last' :: [a] -> a
+last' = foldl1 (\_ x -> x)
+
+
+scanned = scanl (+) 0 [3,5,2,1]
+-- [0,3,5,2,1]
+--scanr (+) 0 [3,5,2,1]
+--[11,8,3,1,0]
+
+
+-- Function application w $
+
+--($) :: (a -> b) -> a -> b
+--f $ x = f x
+
+equalssquares = if (sqrt (3 + 4 + 5)) == (sqrt $ 3 + 4 + 5) then True else False
+
+results = map ($ 3) [(4+), (10*), (^2), sqrt]
+-- [7.0,30.0,9.0,1.7320508075688772]
 
 
 

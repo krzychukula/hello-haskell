@@ -159,6 +159,29 @@ results = map ($ 3) [(4+), (10*), (^2), sqrt]
 -- [7.0,30.0,9.0,1.7320508075688772]
 
 
+-- Function composition with "."
+
+-- (.) :: (b -> c) -> (a -> b) -> a -> c
+-- f . g = \x -> f (g x)
+-- f . g = \x -> f $ g x
+
+-- 1 multiply by 3
+-- negate
+negateandmutiplyby3 = negate . (* 3)
+-- negateandmutiplyby3 3 -> -9
+
+tonegative = map (negate . abs)
+
+-- Point Free Style
+
+oddSquareSumPoint :: Integer
+oddSquareSumPoint = sum . takeWhile (<1000) . filter odd . map (^2) $ [1..]
+-- but more readable is:
+oddSquareSumReadable :: Integer
+oddSquareSumReadable =
+  let oddSquares = filter odd $ map (^2) [1..]
+      belowLimit = takeWhile (<1000) oddSquares
+  in  sum belowLimit
 
 
 ---

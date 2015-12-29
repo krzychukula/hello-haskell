@@ -35,6 +35,41 @@ added = map sum $ transpose [[0,3,5,9],[10,0,0,9],[8,5,1,-1]]
 joined = concat ["foo", "bar"]
 --foobar
 
+-- tricky union:
+ures = "hey man" `union` "man what's up"
+-- "hey manwt'sup"
+
+-- gropu is the same as groupBy (==)
+
+
+-- Data.Char
+
+-- all isAlphaNum "bobby283"
+
+myWordsWithSpaces = groupBy ((==) `on` isSpace)
+-- works a litttle like words function
+
+myWords = filter (not . any isSpace) . myWordsWithSpaces
+-- should filter spaces
+
+-- generalCategory ' '
+-- Space
+
+-- Caesar cipher
+
+encode :: Int -> String -> String
+encode shift msg =
+  let ords = map ord msg
+      shifted = map (+ shift) ords
+  in map chr shifted
+
+-- encode 3 "Heeeeey"
+-- "Khhhhh|"
+
+decode :: Int -> String -> String
+decode shift msg = encode (negate shift) msg
+-- just like: encode (-3) "Khhhhh|"
+
 
 
 

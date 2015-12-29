@@ -1,7 +1,7 @@
 module Main where
 
 import Lib
-import Geometry
+import Geometry.Sphere as Sphere
 
 main :: IO ()
 main = someFunc

@@ -1,6 +1,7 @@
 module Main where
 
 import Lib
+import Geometry
 
 main :: IO ()
 main = someFunc

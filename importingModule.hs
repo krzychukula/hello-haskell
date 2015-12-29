@@ -11,6 +11,7 @@ import Data.List
 -- M.filter
 
 import qualified Data.Map as Map
+import qualified Data.Set as Set
 
 import Data.List
 
@@ -167,6 +168,20 @@ phoneBookToM xs = Map.fromListWith (++) $ map (\(k,v) -> (k,[v])) xs
 -- fromList [(2,108),(3,62),(4,37)]
 
 
+
+-- import qualified Data.Set as Set
+
+text1 = "I just had an anime dream. Anime... Reality... Are they so different?"
+text2 = "The old man left his garbage can out and now his trash is all over my lawn!"
+
+set1 = Set.fromList text1
+set2 = Set.fromList text2
+
+-- Set.intersection set1 set2
+-- fromList " adefhilmnorstuy"
+
+-- as far as I understand Map and Set work exactly the same,
+-- what am I missing?
 
 
 

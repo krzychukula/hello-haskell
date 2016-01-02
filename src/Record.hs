@@ -103,7 +103,7 @@ scalarMult :: (Num t) => Vector t -> Vector t -> t
 data Person = Person { firstName :: String
                       , lastName :: String
                            , age :: Int
-                     } deriving (Eq)
+                     } deriving (Eq, Show, Read)
 
 
 mikeD = Person {firstName = "Michael", lastName = "Diamond", age = 43}
@@ -115,7 +115,11 @@ mca = Person {firstName = "Adam", lastName = "Yauch", age = 44}
 -- mikeD == Person {firstName = "Michael", lastName = "Diamond", age = 43}
 -- True
 
+-- mikeD
+-- Person {firstName = "Michael", lastName = "Diamond", age = 43}
 
+-- ghci> read "Person {firstName =\"Michael\", lastName =\"Diamond\", age = 43}" :: Person
+-- Person {firstName = "Michael", lastName = "Diamond", age = 43}
 
 
 

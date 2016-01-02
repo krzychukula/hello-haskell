@@ -138,6 +138,46 @@ mca = Person {firstName = "Adam", lastName = "Yauch", age = 44}
 -- True
 
 
+data Day = Monday | Tuesday | Wednesday | Thursday | Friday | Saturday | Sunday
+            deriving (Eq, Ord, Show, Read, Bounded, Enum)
+
+-- Show + Read
+-- ghci> Wednesday
+-- Wednesday
+-- ghci> show Wednesday
+-- "Wednesday"
+-- ghci> read "Saturday" :: Day
+-- Saturday
+
+-- Eq + Ord
+-- ghci> Saturday == Sunday
+-- False
+-- ghci> Saturday == Saturday
+-- True
+-- ghci> Saturday > Friday
+-- True
+-- ghci> Monday `compare` Wednesday
+-- LT
+
+-- Bounded
+-- ghci> minBound :: Day
+-- Monday
+-- ghci> maxBound :: Day
+-- Sunday
+
+--
+-- Enum -> predacessors & successors + list ranges
+-- ghci> succ Monday
+-- Tuesday
+-- ghci> pred Saturday
+-- Friday
+-- ghci> [Thursday .. Sunday]
+-- [Thursday,Friday,Saturday,Sunday]
+-- ghci> [minBound .. maxBound] :: [Day]
+-- [Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday]
+
+
+
 
 
 --

@@ -121,6 +121,22 @@ mca = Person {firstName = "Adam", lastName = "Yauch", age = 44}
 -- ghci> read "Person {firstName =\"Michael\", lastName =\"Diamond\", age = 43}" :: Person
 -- Person {firstName = "Michael", lastName = "Diamond", age = 43}
 
+-- by default Constructors order is used when ordering values that were made with them
+-- data Bool = False | True deriving (Ord)
+-- False < True - because it is before True
+
+-- the same with Maybe
+-- Nothing < Just 100
+-- True
+-- ghci> Nothing > Just (-49999)
+-- False
+
+-- But with the same constructor (Just) then actual values can be compared
+-- ghci> Just 3 `compare` Just 2
+-- GT
+-- ghci> Just 100 > Just 50
+-- True
+
 
 
 

@@ -1,3 +1,9 @@
+module Record
+    ( Person(..)
+    , mca
+    , adRock
+    , mikeD
+    ) where
 
 
 data SimplePerson = SimplePerson String String Int Float String String deriving (Show)
@@ -25,20 +31,20 @@ guy = SimplePerson "Buddy" "Finklestein" 43 184.2 "526-2928" "Chocolate"
 -- firstName guy
 -- "Buddy"
 
-data Person = Person {  firstName :: String
-                      , lastName :: String
-                      , age :: Int
-                      , height :: Float
-                      , phoneNumber :: String
-                      , flavor :: String
-                     } deriving (Show)
+-- data Person = Person {  firstName :: String
+--                       , lastName :: String
+--                       , age :: Int
+--                       , height :: Float
+--                       , phoneNumber :: String
+--                       , flavor :: String
+--                      } deriving (Show)
 
 
 
-data CarOne = CarOne { company :: String
-                , model :: String
-                , year :: Int
-                } deriving (Show)
+-- data CarOne = CarOne { company :: String
+--                 , model :: String
+--                 , year :: Int
+--                 } deriving (Show)
 
 -- > Car {company="Ford", model="Mustang", year=1967}
 -- Car {company = "Ford", model = "Mustang", year = 1967}
@@ -54,9 +60,9 @@ data Car a b c = Car { company :: a
                       , year :: c
                     } deriving (Show)
 
-tellCarOne :: CarOne -> String
-tellCarOne (Car {company = c, model = m, year = y}) = "This " ++ c ++ " " ++ m ++ " was made in " ++ show y
-
+-- tellCarOne :: CarOne -> String
+-- tellCarOne (Car {company = c, model = m, year = y}) = "This " ++ c ++ " " ++ m ++ " was made in " ++ show y
+--
 -- ghci> let stang = Car {company="Ford", model="Mustang", year=1967}
 -- ghci> tellCar stang
 -- "This Ford Mustang was made in 1967"
@@ -90,6 +96,25 @@ scalarMult :: (Num t) => Vector t -> Vector t -> t
 -- 74.0
 -- ghci> Vector 2 9 3 `vectMult` (Vector 4 9 5 `scalarMult` Vector 9 2 4)
 -- Vector 148 666 222
+
+
+-- Derived Instances
+
+data Person = Person { firstName :: String
+                      , lastName :: String
+                           , age :: Int
+                     } deriving (Eq)
+
+
+mikeD = Person {firstName = "Michael", lastName = "Diamond", age = 43}
+adRock = Person {firstName = "Adam", lastName = "Horovitz", age = 41}
+mca = Person {firstName = "Adam", lastName = "Yauch", age = 44}
+
+-- Record.mca == Record.adRock
+-- False
+-- mikeD == Person {firstName = "Michael", lastName = "Diamond", age = 43}
+-- True
+
 
 
 

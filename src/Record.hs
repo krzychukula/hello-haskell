@@ -177,6 +177,34 @@ data Day = Monday | Tuesday | Wednesday | Thursday | Friday | Saturday | Sunday
 -- [Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday]
 
 
+-- Type Synonyms
+
+type PhoneNumber = String
+type Name = String
+type PhoneBook = [(Name,PhoneNumber)]
+phoneBook =
+    [("betty","555-2938")
+    ,("bonnie","452-2928")
+    ,("patsy","493-2928")
+    ,("lucille","205-2928")
+    ,("wendy","939-8282")
+    ,("penny","853-2492")
+    ]
+
+inPhoneBook :: Name -> PhoneNumber -> PhoneBook -> Bool
+inPhoneBook name pnumber pbook = (name,pnumber) `elem` pbook
+
+
+type AssocList k v = [(k,v)]
+
+-- partially apply type parameters to get new constructors
+-- type IntMap v = Map Int v
+--
+-- type IntMap' = Map Int
+-- type IntMap = Map.Map Int
+
+data Either a b = Left a | Right b deriving (Eq, Ord, Read, Show)
+
 
 
 

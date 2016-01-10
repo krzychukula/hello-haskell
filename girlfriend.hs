@@ -1,10 +1,15 @@
 import System.IO
 
 main = do
-  handle <- openFile "girlfriend.txt" ReadMode
-  contents <- hGetContents handle
-  putStr contents
-  hClose handle
+  withFile "girlfriend.txt" ReadMode (\handle -> do
+    contents <- hGetContents handle
+    putStr contents)
+
+-- main = do
+--   handle <- openFile "girlfriend.txt" ReadMode
+--   contents <- hGetContents handle
+--   putStr contents
+--   hClose handle
 
 -- `stack runghc girlfriend.hs`
 -- Hey! Hey! You! You!

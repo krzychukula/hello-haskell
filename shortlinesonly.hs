@@ -12,6 +12,9 @@ shortLinesOnly input =
       result = unlines shortLines
   in result
 
+-- this can be writter like:
+-- main = interact $ unlines . filter ((<10) . length) . lines
+
 -- `stack runghc shortlinesonly.hs`
 -- this is long line that's going to be ignored
 -- repeat

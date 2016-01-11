@@ -5,3 +5,9 @@ helloworld
 helloworld.hi
 
 helloworld.o
+
+*.hi
+
+*.o
+
+todo

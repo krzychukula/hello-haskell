@@ -3,3 +3,28 @@
 class (Functor f) => Applicative f where
   pure :: a -> f a
   (<*>) :: f (a -> b) -> f a -> f b
+
+
+class Applicative Maybe where
+  pure = Just
+  Nothing <*> _ = Nothing
+  (Just f) <*> something = fmap f something
+
+-- ghci> Just (+3) <*> Just 9
+-- Just 12
+-- ghci> pure (+3) <*> Just 10
+-- Just 13
+-- ghci> pure (+3) <*> Just 9
+-- Just 12
+-- ghci> Just (++"hahah") <*> Nothing
+-- Nothing
+-- ghci> Nothing <*> Just "woot"
+-- Nothing
+
+
+-- ghci> pure (+) <*> Just 3 <*> Just 5  
+-- Just 8
+-- ghci> pure (+) <*> Just 3 <*> Nothing
+-- Nothing
+-- ghci> pure (+) <*> Nothing <*> Just 5
+-- Nothing

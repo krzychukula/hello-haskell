@@ -22,9 +22,21 @@ class Applicative Maybe where
 -- Nothing
 
 
--- ghci> pure (+) <*> Just 3 <*> Just 5  
+-- ghci> pure (+) <*> Just 3 <*> Just 5
 -- Just 8
 -- ghci> pure (+) <*> Just 3 <*> Nothing
 -- Nothing
 -- ghci> pure (+) <*> Nothing <*> Just 5
 -- Nothing
+
+
+-- pure f <*> x   equals  fmap f x
+-- pure f <*> x <*> y <*> ...   we can write   fmap f x <*> y <*> ...
+
+(<$>) :: (Functor f) => (a -> b) -> f a -> f b
+f <$> x = fmap f x
+
+(++) <$> Just "johntra" <*> Just "volta"
+--Just "johntravolta"
+(++) "johntra" "volta"
+-- "johntravolta"

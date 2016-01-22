@@ -40,3 +40,33 @@ f <$> x = fmap f x
 --Just "johntravolta"
 (++) "johntra" "volta"
 -- "johntravolta"
+
+
+
+instance Applicative [] where
+  pure x = [x]
+  fs <*> xs = [f x | f <- fs, x <- xs]
+
+-- ghci> pure "Hey" :: [String]
+-- ["Hey"]
+-- ghci> pure "Hey" :: Maybe String
+-- Just "Hey"
+
+-- [(*0),(+100)] <*> [1,2,3]
+-- [0,0,0,101,102,103]
+
+-- [(+),(*)] <*> [1,5] <*> [1, 1]
+-- [2,2,6,6,1,1,5,5]
+
+-- (++) <$> ["ha", "czesc", "hm"] <*> ["?","!","."]
+-- ["ha?","ha!","ha.","czesc?","czesc!","czesc.","hm?","hm!","hm."]
+
+-- > [ x * y | x <- [2,5,10], y <- [8,10,11]]
+-- [16,20,22,40,50,55,80,100,110]
+-- > (*) <$> [2,5,10] <*> [8,10,11]
+-- [16,20,22,40,50,55,80,100,110]
+
+
+-- If we wanted all possible products of those two lists that are more than 50, we'd just do:
+-- filter (>50) $ (*) <$> [2,5,10] <*> [8,10,11]
+-- [55,80,100,110]

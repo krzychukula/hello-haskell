@@ -70,3 +70,31 @@ instance Applicative [] where
 -- If we wanted all possible products of those two lists that are more than 50, we'd just do:
 -- filter (>50) $ (*) <$> [2,5,10] <*> [8,10,11]
 -- [55,80,100,110]
+
+
+
+instance Applicative IO where
+  pure = return
+  a <*> b = do
+    f <- a
+    x <- b
+    return (f x)
+
+myAction :: IO String
+myAction = do
+  a <- getLine
+  b <- getLine
+  return $ a ++ b
+
+-- the same as:
+
+myAction :: IO String
+myAction = (++) <$> getLine <*> getLine
+
+
+main = do
+  a <- (++) <$> getLine <*> getLine
+  putStrLn $ "The two lines concatenated turn out to be: " ++ a
+
+
+  

@@ -71,7 +71,8 @@ instance Applicative [] where
 -- filter (>50) $ (*) <$> [2,5,10] <*> [8,10,11]
 -- [55,80,100,110]
 
-
+-- at this point I have read: http://adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html
+-- helped a lot with understanding applicative monads
 
 instance Applicative IO where
   pure = return
@@ -96,5 +97,13 @@ main = do
   a <- (++) <$> getLine <*> getLine
   putStrLn $ "The two lines concatenated turn out to be: " ++ a
 
+-- r ->  is the same as (->) r. Return type not specified for some reason
+instance Applicative ((->) r) where
+  pure x = (\_ -> x)
+  f <*> g = \x -> f x (g x)
 
-  
+-- ghci> pure 3 "blah"
+-- 3
+
+-- ghci> (\x y z -> [x,y,z]) <$> (+3) <*> (*2) <*> (/2) $ 5
+-- [8.0,10.0,2.5]

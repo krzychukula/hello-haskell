@@ -44,4 +44,28 @@ instance Monad Maybe where
 -- Just 90
 -- ghci> Nothing >>= \x -> return (x*10)
 -- Nothing
- 
+
+
+type Birds = Int
+type Pole (Birds, Birds)
+
+landLeft :: Birds -> Pole -> Maybe Pole
+landLeft n (left, right)
+  | abs ((left + n) - right) < 4 = Just (left + n, right)
+  | otherwise                    = Nothing
+
+landRight :: Birds -> Pole -> Maybe Pole
+landRight n (left, right)
+  | abs (left - (right + n)) < 4 = Just (left, right + n)
+  | otherwise                    = Nothing
+
+  --
+  -- ghci> landLeft 2 (0,0)
+  -- Just (2,0)
+  -- ghci> landLeft 10 (0,3)
+  -- Nothing
+
+  -- ghci> landRight 1 (0,0) >>= landLeft 2  
+  -- Just (2,1)
+  -- ghci> Nothing >>= landLeft 2
+  -- Nothing

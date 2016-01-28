@@ -65,7 +65,28 @@ landRight n (left, right)
   -- ghci> landLeft 10 (0,3)
   -- Nothing
 
-  -- ghci> landRight 1 (0,0) >>= landLeft 2  
+  -- ghci> landRight 1 (0,0) >>= landLeft 2
   -- Just (2,1)
   -- ghci> Nothing >>= landLeft 2
   -- Nothing
+
+
+-- do notation
+
+Just 3 >>= (\x -> Just (show x ++ "!"))
+-- Just "3!"
+
+Just 3 >>= (\x -> Just "!" >>= (\y -> Just (show x ++ y)))
+-- Just "3!"
+
+-- is a little like:
+let x = 3; y = "!" in show x ++ y
+-- "3!"
+
+-- but with failure context:
+-- ghci> Nothing >>= (\x -> Just "!" >>= (\y -> Just (show x ++ y)))
+-- Nothing
+-- ghci> Just 3 >>= (\x -> Nothing >>= (\y -> Just (show x ++ y)))
+-- Nothing
+-- ghci> Just 3 >>= (\x -> Just "!" >>= (\y -> Nothing))
+-- Nothing

@@ -90,3 +90,16 @@ let x = 3; y = "!" in show x ++ y
 -- Nothing
 -- ghci> Just 3 >>= (\x -> Just "!" >>= (\y -> Nothing))
 -- Nothing
+
+foo :: Maybe String
+foo = Just 3   >>= (\x ->
+      Just "!" >>= (\y ->
+      Just (show x ++ y)))
+
+-- to save writing:
+
+foo :: Maybe String
+foo = do
+  x <- Just 3
+  y <- Just "!"
+  Just (show x ++ y)

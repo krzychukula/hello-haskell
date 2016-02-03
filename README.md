@@ -3,7 +3,7 @@
 * http://book.realworldhaskell.org/read/
 * http://learnyouahaskell.com/chapters
 * http://adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html
-
+* http://adit.io/posts/2013-06-10-three-useful-monads.html
 # My Notes
 
 ##  I used stack instead of global haskell.
